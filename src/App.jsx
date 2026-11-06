@@ -29,32 +29,34 @@ const App = () => {
           })
     }, [limit])
 
-    
+    const filterCoins = coins.filter((coin) => {
+      return coin.name.toLowerCase().includes(filter.toLowerCase()) || coin.symbol.toLowerCase().includes(filter.toLowerCase())
+    })
 
-
-      const filtercoins = coins.filter((coin)) => {
-        return coin.name.tolowerCase().includes(filter.tolowerCase( )) || coin.symbol.tolowerCase().includes(filter.tolowerCase())
-        return(
-          </div>
+    return(
+        <div>
             <h1>Crypto App</h1>
             { loading && <p>Loading...</p>}
             { error && <div className="error">{error}</div>}
-            <div className="top-control"/>
-              <FilterInput filter={filter} onfilterChange={setFilter}/>
-              <label htmlFor="limit">Show: </label>
-              <select value={limit} id="limit"
-                onChange={(e) => setLimit(Number(e.target.value))}
-              >
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-              </select>
+            <div className="top-controls">
+                <FilterInput filter={filter} onFilterChange={setFilter}/>
+                <div className="controls">
+                  <label htmlFor="limit">Show: </label>
+                  <select value={limit} id="limit"
+                    onChange={(e) => setLimit(Number(e.target.value))}
+                  >
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                </div>
             </div>
+
             { !loading && !error && (
                 <main className="grid">
-                {filterCoins.map((coin) =>
+                    { filterCoins.map((coin) => (
                         <CoinCard coin={coin} key={coin.id}/>  
                     ))}
                 </main>
