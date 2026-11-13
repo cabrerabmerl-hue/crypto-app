@@ -1,12 +1,13 @@
 import {useState, useEffect} from "react"
+import {Routes, Route} from 'react-router'
 const API_URL = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd'
 
 import HomePage from "./pages/home"
 import AboutPage from "./pages/about"
 import NotFoundPage from "./pages/not-found"
-import {Routes, Route} from 'react-router'
+import CoinDetailsPage from "./pages/coin-details"
 
-
+import Header from "./components/Header"
 
 const App = () => {
     const [coins, setCoins] = useState([])
@@ -36,6 +37,7 @@ const App = () => {
 
     return(
       <>
+      <Header />
       <Routes>
         <Route path='/' element={ <HomePage
           coins={coins}
@@ -47,7 +49,9 @@ const App = () => {
           error={error}
           />
         }/>
-        <Route path='/about' element={<AboutPage />}/>
+        <Route path='/about' element={<AboutPage />} />
+        <Route path="/coin/:id" element={<CoinDetailsPage />}/>
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
       </>
     )
@@ -55,4 +59,4 @@ const App = () => {
 
 }
 
-export default App
+export default Appss
