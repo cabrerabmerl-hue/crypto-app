@@ -1,16 +1,16 @@
-const FilterInput = ({filter, onfilterChange}) =>{
+const FilterInput = ({filter, onFilterChange}) =>{
     return(
-    <div classname="filter">
-        <Input
-        type="text"
-        value={filter}
-        placeholder="filter coins by name or symbol"
-        onchange={(e) => onFilterchange(e.target.value)}
-        />
+        <div className="filter">
+            <input 
+                type="text" 
+                value={filter} 
+                placeholder="Filter coins by name or symbol" 
+                onChange={(e) => onFilterChange(e.target.value)}
+            />
+
         </div>
-        )
+    )
 
-        }
-
+}
 
 export default FilterInput
