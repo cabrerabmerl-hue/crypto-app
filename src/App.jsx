@@ -7,6 +7,7 @@ import NotFoundPage from "./pages/not-found"
 import {Routes, Route} from 'react-router'
 
 
+
 const App = () => {
     const [coins, setCoins] = useState([])
     const [loading, setLoading] = useState(true)
@@ -46,8 +47,7 @@ const App = () => {
           error={error}
           />
         }/>
-        <Route path='/about' element={<AboutPage />} />
-        <Route path='*' element={<NotFoundPage />}>
+        <Route path='/about' element={<AboutPage />}/>
       </Routes>
       </>
     )
